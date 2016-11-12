@@ -18,15 +18,12 @@ namespace Texttale_Installer
                 (Image) new ImageConverter().ConvertFrom(wc.DownloadData("http://arbituaryotter.bitballoon.com/def.ico")),
                 pictureBox1.Width,
                 pictureBox1.Height);
-            if (InDL())
-            {
-                CheckForUpdates();
-            }
+            CheckForUpdates();
         }
 
         private bool InDL()
         {
-            if (File.Exists(Path.Combine(downloadLocation, "Texttale.exe"))) {
+            if (File.Exists(Path.Combine(downloadLocation, "Texttale.exe")) && InDL()) {
                 return true;
             } else {
                 return false;
@@ -46,17 +43,15 @@ namespace Texttale_Installer
             }
         }
 
-        public int CheckForUpdates()
+        public bool CheckForUpdates()
         {
-            if (Convert.ToInt32(File.ReadAllText(Path.Combine(downloadLocation, "buildnum"))).Equals(Convert.ToInt32(wc.DownloadString("http://texttale.ga/upload/buildnum"))))
-            {
-                button2.Enabled = false;
-                return
+            if (Convert.ToInt32(File.ReadAllText(Path.Combine(downloadLocation, "buildnum"))).Equals(Convert.ToInt32(wc.DownloadString("http://texttale.ga/upload/buildnum")))){
+                return false;
             }
-            else if (Convert.ToInt32(File.ReadAllText(Path.Combine(downloadLocation, "buildnum"))) < Convert.ToInt32(wc.DownloadString("http://texttale.ga/upload/buildnum")))
-            {
-
-            };
+            else {
+                return true;
+            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -88,16 +83,16 @@ namespace Texttale_Installer
                 wc.DownloadFile("http://texttale.ga/upload/" + buildnum + "/Texttale.exe", Path.Combine(downloadLocation, "Texttale.exe"));
                 wc.DownloadFile("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll", Path.Combine(downloadLocation, "SlimDX.dll"));
                 wc.DownloadFile("http://texttale.ga/upload/buildnum", Path.Combine(downloadLocation, "buildnum"));
+                MessageBox.Show("The update to build number " + buildnum + " is complete.","Done Updating.", MessageBoxButtons.OK);
             } else {
-
+                wc.DownloadFile("http://texttale.ga/upload/" + buildnum + "/Texttale.exe", Path.Combine(downloadLocation, "Texttale.exe"));
+                wc.DownloadFile("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll", Path.Combine(downloadLocation, "SlimDX.dll"));
+                wc.DownloadFile("http://texttale.ga/upload/buildnum", Path.Combine(downloadLocation, "buildnum"));
+                button1.Enabled = false;
+                button3.Enabled = true;
+                button4.Enabled = true;
             }
 
-            wc.DownloadFile("http://texttale.ga/upload/" + buildnum + "/Texttale.exe", Path.Combine(downloadLocation, "Texttale.exe"));
-            wc.DownloadFile("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll", Path.Combine(downloadLocation, "SlimDX.dll"));
-            wc.DownloadFile("http://texttale.ga/upload/buildnum", Path.Combine(downloadLocation, "buildnum"));
-            button1.Enabled = false;
-            button3.Enabled = true;
-            button4.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,7 +102,10 @@ namespace Texttale_Installer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CheckForUpdates();
+            if (CheckForUpdates())
+            {
+                DownloadOrUpdate(true);
+            }
         }
     }
 }
