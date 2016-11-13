@@ -1,9 +1,0 @@
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\bin\Debug\Texttale Installer.exe.config
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\bin\Debug\Texttale Installer.exe
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\bin\Debug\Texttale Installer.pdb
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\obj\Debug\Texttale Installer.csprojResolveAssemblyReference.cache
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\obj\Debug\Texttale_Installer.Form1.resources
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\obj\Debug\Texttale_Installer.Properties.Resources.resources
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\obj\Debug\Texttale Installer.csproj.GenerateResource.Cache
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\obj\Debug\Texttale Installer.exe
-C:\Users\A1\Documents\Visual Studio 2015\Projects\Texttale Installer\obj\Debug\Texttale Installer.pdb

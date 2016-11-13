@@ -99,6 +99,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Uninstall";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button5
             // 
@@ -118,6 +119,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Run";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // TexttaleUpdater
             // 
@@ -137,7 +139,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TexttaleUpdater";
-            this.Text = "Texttale Updater";
+            this.Text = "Texttale Installer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
