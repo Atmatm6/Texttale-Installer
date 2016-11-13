@@ -2,4 +2,4 @@
 
 for installing and updating Texttale
 
-You can download it at [this link](http://texttale.ga/upload/installer) soon.
+You can download it at [this link](http://texttale.ga/installer) soon.
