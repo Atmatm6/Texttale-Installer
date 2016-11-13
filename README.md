@@ -2,4 +2,4 @@
 
 for installing and updating Texttale
 
-Moved to http://gitlab.com/Atmatm6/Texttale-Installer
+You can download it at [this link](http://texttale.ga/upload/installer) soon.
