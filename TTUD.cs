@@ -6,6 +6,10 @@ using System.IO;
 using System.Text;
 using System.Diagnostics;
 using System.Threading;
+using System.ComponentModel;
+using System.ServiceProcess;
+using System.Collections;
+using System.Configuration.Install;
 //If anyone sees this, understand that I am only half sure what I am writing is correct.
 namespace Texttale_Installer
 {
@@ -27,6 +31,7 @@ namespace Texttale_Installer
             if (TexttaleInstalled()) {
                 button1.Enabled = false;
                 button3.Enabled = true;
+                button4.Enabled = true;
                 if (CheckForUpdates()) button2.Enabled = true;
                 else button2.Enabled = false;
             }
@@ -34,6 +39,7 @@ namespace Texttale_Installer
                 button1.Enabled = true;
                 button2.Enabled = false;
                 button3.Enabled = false;
+                button4.Enabled = false;
             }
             
             this.Visible = true;
@@ -141,6 +147,7 @@ namespace Texttale_Installer
             {
                 button1.Enabled = false;
                 button3.Enabled = true;
+                button4.Enabled = true;
                 if (CheckForUpdates()) button2.Enabled = true;
                 else button2.Enabled = false;
             }
@@ -149,6 +156,7 @@ namespace Texttale_Installer
                 button1.Enabled = true;
                 button2.Enabled = false;
                 button3.Enabled = false;
+                button4.Enabled = true;
             }
         }
 
@@ -160,13 +168,13 @@ namespace Texttale_Installer
             {
                 DeleteFolder(false);
                 File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "Texttale.exe")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/" + buildnum + "/Texttale.exe")));
-                File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "SlimDX.dll")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll")));
+       //       File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "SlimDX.dll")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll")));
                 File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "buildnum")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/buildnum")));
                 MessageBox.Show("The update to build number " + buildnum + " is complete.","Done Updating.", MessageBoxButtons.OK);
             } else {
                 Directory.CreateDirectory(new Uri(Path.Combine(DownloadLocation, "Texttale")).AbsolutePath);
                 File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "Texttale.exe")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/" + buildnum + "/Texttale.exe")));
-                File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "SlimDX.dll")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll")));
+     //         File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "SlimDX.dll")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/" + buildnum + "/SlimDX.dll")));
                 File.WriteAllBytes(new Uri(Path.Combine(DownloadLocation, "buildnum")).AbsolutePath, wc.DownloadData(String.Concat("http://texttale.ga/upload/buildnum")));
                 button1.Enabled = false;
                 MessageBox.Show(String.Concat("The download of Texttale build no. ", buildnum, " is complete"), "Done Downloading", MessageBoxButtons.OK);
@@ -216,7 +224,7 @@ namespace Texttale_Installer
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine("FileNotFoundException: File \"" + ex.FileName + "not found.");
+                Console.WriteLine("FileNotFoundException: File \"" + ex.FileName + "\"not found.");
             }
             finally
             {
@@ -229,3 +237,4 @@ namespace Texttale_Installer
         }
     }
 }
+
